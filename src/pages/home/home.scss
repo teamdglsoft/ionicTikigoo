@@ -1,3 +1,22 @@
 page-home {
+  p {
+    background: transparent;
+    color: #fff;
+    padding: 0px;
+  }
+  .poss {
+    padding-top: 10%;
+  }
+.bg-image {
+  background-image: url('../assets/imgs/background.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.fondotransparente {
+  border-color: rgba(0, 0, 0, 0);
+  background-color:rgba(0,0,0,0);
+  box-shadow: none !important;
+}
 
 }

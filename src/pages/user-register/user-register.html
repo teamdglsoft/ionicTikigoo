@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>REGISTRARSE</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+      <ion-item no-lines  class="fondotransparente">
+        <ion-card class="fondotransparente">
+        <img src="../../assets/imgs/LOGOBG.png">
+        </ion-card>
+      </ion-item>
+      <ion-list no-lines *ngIf="estado === 0">
+        <ion-item class="fondotransparente">
+          <ion-label stacked style="color: white;" text-center>Ingresa tu número para iniciar tu registro</ion-label>
+          <ion-label style="color: white;" floating>Celular</ion-label>
+          <ion-input type="number" placeholder="Celular" [(ngModel)]="celular" style="color: white;">
+          </ion-input>
+        </ion-item>
+        <ion-item no-lines class="fondotransparente" text-center>
+          <button style="color: white;" ion-button clear (click)="addNewDeviceAndCode()" [disabled]="celular.length < 10"> CONTINUAR </button>
+        </ion-item>
+      </ion-list>
+      <ion-list no-lines *ngIf="estado === 1">
+        <ion-item class="fondotransparente">
+          <ion-label stacked style="color: white;" text-center>Ingresa el codigo de confirmación</ion-label>
+          <ion-label style="color: white;" floating>Codigo</ion-label>
+          <ion-input type="number" placeholder="Codigo" [(ngModel)]="codigoSMS" style="color: white;">
+          </ion-input>
+        </ion-item>
+        <ion-item no-lines class="fondotransparente" text-center>
+
+  <ion-row>
+    <ion-col col-4>
+      <button style="color: white; max-width: 100%" ion-button clear block text-wrap [disabled]="codigoSMS.length < 4" (click)="updateStateCodeToDevineId()"> CONTINUAR </button>
+    </ion-col>
+    <ion-col col-12 clear block text-wrap text-left> Has introducido mal tu numero?
+      <a (click)="backToSendSms()">ingresalo de nuevo</a>
+    </ion-col>
+    <ion-col col-12 clear block text-wrap text-left> No recibiste el SMS de confirmación?
+      <a (click)="backToSendSms()">Reenviar SMS</a>
+    </ion-col>
+  </ion-row>
+
+
+        </ion-item>
+      </ion-list>
+
+      <ion-list no-lines *ngIf="estado === 2">
+        <ion-item class="fondotransparente">
+          <ion-label stacked style="color: white;" text-center>Ingrese los siguientes datos</ion-label>
+          <ion-label style="color: white;" floating>Nombre</ion-label>
+          <ion-input type="text" style="color: white;" [(ngModel)]="nombre"></ion-input>
+        </ion-item>
+
+        <ion-item class="fondotransparente">
+          <ion-label style="color: white;" floating>Calle</ion-label>
+          <ion-input type="text" style="color: white;" [(ngModel)]="calle"></ion-input>
+        </ion-item>
+
+        <ion-item class="fondotransparente">
+          <ion-label style="color: white;" floating>Colonia</ion-label>
+          <ion-input type="text" style="color: white;" [(ngModel)]="colonia"></ion-input>
+        </ion-item>
+
+        <ion-item class="fondotransparente">
+          <ion-label style="color: white;" floating>Ciudad</ion-label>
+          <ion-input type="text" style="color: white;" [(ngModel)]="ciudad"></ion-input>
+        </ion-item>
+
+        <ion-item class="fondotransparente">
+          <ion-label style="color: white;" floating>Estado</ion-label>
+          <ion-input type="text" style="color: white;" [(ngModel)]="estadoU"></ion-input>
+        </ion-item>
+
+        <ion-item class="fondotransparente">
+          <ion-label style="color: white;" floating>Cp</ion-label>
+          <ion-input type="number" style="color: white;" [(ngModel)]="cp"></ion-input>
+        </ion-item>
+
+        <ion-item class="fondotransparente">
+          <ion-label style="color: white;" floating>Telefono</ion-label>
+          <ion-input type="number" style="color: white;" [(ngModel)]="telefono"></ion-input>
+        </ion-item>
+
+        <ion-item class="fondotransparente">
+          <ion-label style="color: white;" floating>Correo</ion-label>
+          <ion-input type="email" style="color: white;" [(ngModel)]="correo"></ion-input>
+        </ion-item>
+
+        <ion-item class="fondotransparente">
+        <ion-col col-4>
+          <button style="color: white; max-width: 100%" ion-button clear block text-wrap (click)="addUserInfo()"> CONTINUAR </button>
+        </ion-col>
+        </ion-item>
+      </ion-list>
+  </ion-list>
+</ion-content>

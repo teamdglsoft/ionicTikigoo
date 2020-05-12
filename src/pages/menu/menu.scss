@@ -1,0 +1,26 @@
+page-menu {
+  p {
+    background: transparent;
+    color: #fff;
+    padding: 0px;
+  }
+  .card {
+  background-color: #7ba4db; // black
+}
+  .Absolute-Center {
+        width: 100%;
+        height: 100%;
+        //overflow: auto;
+        margin: auto;
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+  }
+  ion-content {
+    background: #572c5f !important
+  }
+  .fondotransparente {
+    border-color: rgba(0, 0, 0, 0);
+    background-color:rgba(0,0,0,0);
+    box-shadow: none !important;
+  }
+}

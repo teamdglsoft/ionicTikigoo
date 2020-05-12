@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title *ngIf="!modoPedido">SUCURSALES</ion-title>
+    <ion-title *ngIf="modoPedido">CREAR PEDIDO</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="!showCarrito || productosPedido.length === 0" class="fondotransparente">
+<ion-card class="fondotransparente" *ngIf="!modoPedido">
+
+  <img src="../../assets/imgs/LOGOBG.png">
+  <ion-list>
+    <a ion-item *ngFor="let item of _sp.sucursales" (click)="showSucursalInfor(item)" color="primary">
+      {{ item.nombre }}
+    </a>
+  </ion-list>
+</ion-card>
+<ion-card class="fondotransparente" *ngIf="modoPedido">
+  <ion-fab right top>
+    <button ion-fab color="danger" (click)="showCard()">
+      <ion-icon name="ios-cart"></ion-icon>
+    </button>
+  </ion-fab>
+  <img src="../../assets/imgs/LOGOBG.png">
+  <ion-list *ngIf="_sp.secciones.length === 0">
+    <a ion-item *ngFor="let item of _sp.sucursales" (click)="showMenuProd(item.nombre)" color="primary">
+      {{ item.nombre }}
+    </a>
+  </ion-list>
+</ion-card>
+<ion-card *ngIf="_sp.secciones.length > 0">
+  <ion-list>
+    <u ion-item text-wrap *ngFor="let item of _sp.productos" (click)="showPrompt(item)" color="secondary">
+      <ion-icon name="ios-add" item-start></ion-icon>
+      {{item.nombre}}, {{item.precio}}.00
+    </u>
+    <a ion-item *ngFor="let item of _sp.secciones" (click)="showProductos(item.nseccion)" color="primary">
+      {{ item.nombre }}
+    </a>
+  </ion-list>
+</ion-card>
+</ion-card>
+<ion-card *ngIf="showCarrito && productosPedido.length > 0" class="fondotransparente">
+
+  <ion-card class="fondotransparente">
+    <button ion-button icon-end color="secondary" (click)="avisoMontoAPagar()">
+    Enviar pedido
+    <ion-icon name="ios-send"></ion-icon>
+    </button>
+    <ion-fab right>
+      <button ion-fab mini color="danger" (click)="hideCar()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-fab>
+    </ion-card>
+  <ion-card *ngFor="let item of productosPedido; index as i">
+  <ion-card-header class="cardD">
+    {{item.nombre}}
+  </ion-card-header>
+  <ion-card-content class="cardD">
+    <ion-item class="cardD" *ngIf="item.observaciones">Observaciones: {{item.observaciones}}</ion-item>
+    <ion-item class="cardD">Cantidad: {{item.cantidad}}, Precio: {{item.precio}}</ion-item>
+    <ion-item class="cardD">Total: {{item.total}}</ion-item>
+    <button ion-button small color="danger" (click)="deleteElementToCard(i)">
+      <ion-icon name="ios-trash"></ion-icon>
+    </button>
+  </ion-card-content>
+
+</ion-card>
+</ion-card>
+</ion-content>

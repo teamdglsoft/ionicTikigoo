@@ -1,14 +1,18 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      INICIO
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v3">docs</a> will be your guide.
-  </p>
+<ion-content padding class="bg-image">
+  <ion-card class="fondotransparente" no-lines>
+    <img src="../../assets/imgs/LOGOBG.png">
+  <ion-slides autoplay="1000" loop="true" speed="2500" class="slides poss" pager="true">
+      <ion-slide *ngFor="let item of imagenArr">
+         <img src="{{item.image}}">
+      </ion-slide>
+ </ion-slides>
+</ion-card>
 </ion-content>
