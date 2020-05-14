@@ -1,22 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { url_servicios } from '../../config/url.services';
-// import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
+import { Device } from '@ionic-native/device';
 @Injectable()
 export class RegisterUserProvider {
   codeDeviceId: any;
   constructor(public http: HttpClient,
-  // private uniqueDeviceID: UniqueDeviceID
+  private device: Device
 ) {
-     // this.getCodeToDeviceId();
-  //    this.codeDeviceId = this.uniqueDeviceID.get()
-  // .then((uuid: any) => console.log(uuid))
-  // .catch((error: any) => console.log(error));
+  
   }
 
   getCodeToDeviceId(callback) {
-    let url = url_servicios + 'getDevice/';
-    this.http.get(url+'123123')
+    let url = url_servicios + `getDevice/${this.device.uuid}`;
+    this.http.get(url)
     .map(data => data)
     .subscribe( (data: any) => {
       console.log(data);
@@ -30,9 +27,9 @@ export class RegisterUserProvider {
 
 
 
-  registerNewDeviceId(callback) {
-    let url = url_servicios + 'addDeviceId/';
-    this.http.post(url+'123123', null)
+  registerNewDeviceId(callback, celular: number) {
+    let url = url_servicios + `addDeviceId/${this.device.uuid}/${celular}`;
+    this.http.post(url, null)
     .map(data => data)
     .subscribe( (data: any) => {
       console.log(data);
@@ -41,8 +38,8 @@ export class RegisterUserProvider {
   }
 
   updateEdoToEstado(callback, codeSms: string) {
-    let url = url_servicios + 'validateCodeToDeviceId/';
-    this.http.post(url+'123123/'+codeSms, null)
+    let url = url_servicios + `validateCodeToDeviceId/${this.device.uuid}/${codeSms}`;
+    this.http.post(url, null)
     .map(data => data)
     .subscribe( (data: any) => {
       console.log(data);
@@ -51,7 +48,7 @@ export class RegisterUserProvider {
   }
 
   insertNewUser(callback, allDataToService: any) {
-    let url = url_servicios + 'registerUserInfo/';
+    let url = url_servicios + 'registerUserInfo';
     this.http.post(url, allDataToService)
     .map(data => data)
     .subscribe( (data: any) => {

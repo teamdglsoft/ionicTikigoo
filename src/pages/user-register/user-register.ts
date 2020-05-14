@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController, ModalController } from 'ionic-angular';
 import {RegisterUserProvider}  from "../../providers/index.services";
 import { PedidoPage }  from "../index.paginas";
+import { Device } from '@ionic-native/device';
 @Component({
   selector: 'page-user-register',
   templateUrl: 'user-register.html',
@@ -21,23 +22,26 @@ export class UserRegisterPage {
   cp: string = '';
   telefono: number = null;
   correo: string = '';
+  idDispositivo: any;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private toastCtrl: ToastController,
             private _urp: RegisterUserProvider,
-          private modalCtr: ModalController) {
+          private modalCtr: ModalController,
+        private device: Device) {
 
       this.estado = navParams.get("estado");
+      this.idDispositivo = this.device.uuid;
       console.log('Estado recibido: ', this.estado);
   }
   addNewDeviceAndCode() {
-    this._urp.registerNewDeviceId(response => {
+    this._urp.registerNewDeviceId((response => {
       if(response) {
         this.showCustomToast('Se ha registrado su dispositivo correctamente, en breve resicibira un sms para continuar con su registro.', 6000);
         this.estado = 1;
       }
-    });
+    }), Number(this.celular));
   }
 
   updateStateCodeToDevineId() {
@@ -61,7 +65,7 @@ export class UserRegisterPage {
       cp: this.cp,
       telefono: this.telefono,
       correo: this.correo,
-      nEquipo: 123123,
+      nEquipo: this.idDispositivo,
       edo: 1
     }
     this._urp.insertNewUser((response => {

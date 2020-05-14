@@ -29,7 +29,7 @@
     </a>
   </ion-list>
 </ion-card>
-<ion-card *ngIf="_sp.secciones.length > 0">
+<ion-card *ngIf="_sp.secciones.length > 0 && modoPedido">
   <ion-list>
     <u ion-item text-wrap *ngFor="let item of _sp.productos" (click)="showPrompt(item)" color="secondary">
       <ion-icon name="ios-add" item-start></ion-icon>
