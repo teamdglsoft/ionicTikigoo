@@ -45,6 +45,7 @@
     "zone.js": "0.8.29"
   },
   "devDependencies": {
+    "@angular/cli": "^9.1.6",
     "@angular/tsc-wrapped": "^4.4.6",
     "@ionic/app-scripts": "3.2.4",
     "cordova-plugin-device": "^2.0.2",
