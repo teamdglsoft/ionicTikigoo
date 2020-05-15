@@ -17,6 +17,6 @@ app.use(function(req, res, next) {
 });
 
 app.use(express.static('www'));
-http.listen((process.env.PORT || 5000), function(){
+app.listen((process.env.PORT || 5000), function(){
   console.log('listening on *:5000');
 });
