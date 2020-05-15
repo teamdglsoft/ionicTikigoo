@@ -37,6 +37,9 @@ export class PedidoPage {
         let modal = this.modalCtr.create(UserRegisterPage, {estado: response.edo})
         this.statusCode = response.edo;
         modal.present();
+        modal.onDidDismiss(parametro => {
+          this.statusCode = parametro.newStatus;
+        });
       } else {
         this.statusCode = response.edo;
         console.log('Estatus code: ', response.edo);

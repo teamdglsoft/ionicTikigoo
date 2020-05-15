@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ToastController, AlertController , NavController, NavParams, ModalController } from 'ionic-angular';
+import { ToastController, AlertController , ViewController, NavParams, ModalController } from 'ionic-angular';
 import { SucursalesProvider } from "../../providers/index.services";
 import { SucursalDetallePage }  from "../index.paginas";
 @Component({
@@ -15,7 +15,7 @@ export class SucursalesPage {
   montoTotal: number = 0;
   showCarrito: boolean = false;
   pagaCon: number;
-  constructor(public navCtrl: NavController,
+  constructor(public viewCtrl: ViewController,
     private toastCtrl: ToastController,
     public navParams: NavParams,
     private _sp: SucursalesProvider,
@@ -66,6 +66,7 @@ export class SucursalesPage {
             if(callback){
               this.productosPedido = [];
               this.showCustomToast('El pedido ha sido enviado correctamente', 4000);
+              this.viewCtrl.dismiss();
             }
           }, this.productosPedido);
         }, dataOrder);

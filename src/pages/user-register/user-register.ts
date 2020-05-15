@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ToastController, ModalController } from 'ionic-angular';
+import { ViewController, NavParams, ToastController, ModalController } from 'ionic-angular';
 import {RegisterUserProvider}  from "../../providers/index.services";
 import { PedidoPage }  from "../index.paginas";
 import { Device } from '@ionic-native/device';
@@ -24,7 +24,7 @@ export class UserRegisterPage {
   correo: string = '';
   idDispositivo: any;
 
-  constructor(public navCtrl: NavController,
+  constructor(public viewCtrl: ViewController,
               public navParams: NavParams,
               private toastCtrl: ToastController,
             private _urp: RegisterUserProvider,
@@ -72,8 +72,9 @@ export class UserRegisterPage {
       if(response.ok) {
         this.estado = 3;
         this.showCustomToast('El usuario se ha creado correctamente', 6000);
-        let modal = this.modalCtr.create(PedidoPage)
-        modal.present();
+        this.viewCtrl.dismiss({newStatus: 3});
+        // let modal = this.modalCtr.create(PedidoPage, {newStatus: 3})
+        // modal.present();
       }
       console.log(response);
     }), dataToWs);
