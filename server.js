@@ -1,22 +1,28 @@
-var express  = require('express');
-var app      = express();
-var morgan = require('morgan');
-var bodyParser = require('body-parser');
-var cors = require('cors');
+import Server from './server/server';
+import router from './router/router';
+import bodyParser from 'body-parser';
+require('./server/config')
 
-app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({'extended':'true'}));
-app.use(bodyParser.json());
-app.use(cors());
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods', 'DELETE, PUT');
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+const server = Server.init(process.env.PORT ? +process.env.PORT : 3000);
+server.app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+       next();
+ });
 
-app.use(express.static('www'));
-app.listen((process.env.PORT || 5000), function(){
-  console.log('listening on *:5000');
-});
+ // parse application/x-www-form-urlencoded
+ server.app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+server.app.use(bodyParser.json());
+
+server.app.use(router);
+
+// const mysql = new MySqlClass();
+
+// MySqlClass.instance;
+
+server.start( () => {
+     console.log('Servidor corriendo en el puerto 3000');
+} );
