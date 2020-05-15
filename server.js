@@ -1,28 +1,20 @@
-import Server from './server/server';
-import router from './router/router';
-import bodyParser from 'body-parser';
-require('./server/config')
+var express = require('express'),
+    app = express();
 
+app.use(express.static('www'));
 
-const server = Server.init(process.env.PORT ? +process.env.PORT : 3000);
-server.app.use(function(req, res, next) {
+// CORS (Cross-Origin Resource Sharing) headers to support Cross-site HTTP requests
+app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
-       next();
- });
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+});
 
- // parse application/x-www-form-urlencoded
- server.app.use(bodyParser.urlencoded({ extended: false }))
-// parse application/json
-server.app.use(bodyParser.json());
+// API Routes
+// app.get('/blah', routeHandler);
 
-server.app.use(router);
+app.set('port', process.env.PORT || 5000);
 
-// const mysql = new MySqlClass();
-
-// MySqlClass.instance;
-
-server.start( () => {
-     console.log('Servidor corriendo en el puerto 3000');
-} );
+app.listen(app.get('port'), function () {
+    console.log('Express server listening on port ' + app.get('port'));
+});
