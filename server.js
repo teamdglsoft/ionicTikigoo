@@ -39,7 +39,7 @@ app.use(function(req, res, next) {
 });
 
 app.use(express.static('www'));
-app.listen(app.get(process.env.PORT || 5000), function () {
+app.listen(process.env.PORT || 5000, () => {
   console.log('Express server listening on port ' + app.get('port'));
 });
 
