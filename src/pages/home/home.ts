@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Device } from '@ionic-native/device';
 
-//import { SucursalesProvider } from "../../providers/sucursales/sucursales";
 import { MenuPage }  from "../menu/menu";
-//import { SucursalesPage }  from "../sucursales/sucursales";
 
 @Component({
   selector: 'page-home',
@@ -13,9 +12,11 @@ export class HomePage {
   imagenArr: any  = [];
   menuPage = MenuPage;
   //sucursalesPage = SucursalesPage;
-  constructor(public navCtrl: NavController
+  constructor(public navCtrl: NavController,
+    private device: Device
   //private _sp: SucursalesProvider
 ) {
+  console.log('Devide id:', this.device.uuid);
     this.imagenArr = [
       {
         'image': '../../assets/imgs/slides/01.jpg'
