@@ -19,11 +19,18 @@ export class HomePage {
   console.log('Devide id:', this.device.uuid);
     this.imagenArr = [
       {
-        'image': '../../assets/imgs/slides/01.jpg'
+        'image': '../../assets/imgs/slides/promociones/promo1.jpg'
       },
       {
-        'image': '../../assets/imgs/slides/02.jpg'
-      }];
+        'image': '../../assets/imgs/slides/promociones/promo2.jpg'
+      },
+      {
+        'image': '../../assets/imgs/slides/promociones/promo3.jpg'
+      },
+      {
+        'image': '../../assets/imgs/slides/promociones/promo4.jpg'
+      }
+    ];
   }
   showGaleria() {
     let modal = this.modalCtrl.create(GaleriaPage)
