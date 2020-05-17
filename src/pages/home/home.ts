@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 import { Device } from '@ionic-native/device';
 
-import { MenuPage }  from "../menu/menu";
+import { MenuPage, SucursalesPage, GaleriaPage }  from "../index.paginas";
 
 @Component({
   selector: 'page-home',
@@ -10,9 +10,9 @@ import { MenuPage }  from "../menu/menu";
 })
 export class HomePage {
   imagenArr: any  = [];
-  menuPage = MenuPage;
   //sucursalesPage = SucursalesPage;
   constructor(public navCtrl: NavController,
+    private modalCtrl: ModalController,
     private device: Device
   //private _sp: SucursalesProvider
 ) {
@@ -24,6 +24,18 @@ export class HomePage {
       {
         'image': '../../assets/imgs/slides/02.jpg'
       }];
+  }
+  showGaleria() {
+    let modal = this.modalCtrl.create(GaleriaPage)
+    modal.present();
+  }
+  showMenu() {
+    let modal = this.modalCtrl.create(MenuPage)
+    modal.present();
+  }
+  showSucursales() {
+    let modal = this.modalCtrl.create(SucursalesPage)
+    modal.present();
   }
 
 }

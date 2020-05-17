@@ -9,7 +9,7 @@ export class SucursalesProvider {
   productos: any [] = [];
 
   constructor(public http: HttpClient) {
-    this.getSucursales();
+    // this.getSucursales();
     //console.log('Hello SucursalesProvider Provider');
   }
 
@@ -44,17 +44,16 @@ export class SucursalesProvider {
     callback(true);
   }
 
-  getSucursales () {
+  getSucursales (callback) {
     let url = url_servicios + 'sucursales';
     this.http.get(url)
     .subscribe( (data: any) => {
       console.log(data);
       if(data.error) {
-
+        callback(false);
       } else {
         this.sucursales.push( ...data.sucursales );
-        console.log(this.sucursales);
-
+        callback(this.sucursales);
       }
     } );
   }

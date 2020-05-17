@@ -1,1 +1,1 @@
-web: npm run build && node server
+git addweb: npm run build && node server

@@ -1,22 +1,41 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title *ngIf="!modoPedido">SUCURSALES</ion-title>
-    <ion-title *ngIf="modoPedido">CREAR PEDIDO</ion-title>
-  </ion-navbar>
+  <ion-toolbar class="toolbar-background">
+    <ion-title>
+      <span style="color: white;">SUCURSALES</span>
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span showWhen="ios" style="color: white;">VOLVER</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card *ngIf="!showCarrito || productosPedido.length === 0" class="fondotransparente">
+  <!-- <ion-card *ngIf="!showCarrito || productosPedido.length === 0" class="fondotransparente"> -->
 <ion-card class="fondotransparente" *ngIf="!modoPedido">
-
-  <img src="../../assets/imgs/LOGOBG.png">
   <ion-list>
-    <a ion-item *ngFor="let item of _sp.sucursales" (click)="showSucursalInfor(item)" color="primary">
+    <ion-item style="color: white;" *ngFor="let item of sucursales" no-lines class="fondotransparente">
       {{ item.nombre }}
-    </a>
+      <br>
+      <br>
+      DIRECCIÓN
+      <br><br>
+      {{item.calle}}, {{item.colonia}},
+        <br>
+        {{item.municipio}}, {{item.ciudad}},
+          <br>
+          {{item.estado}}
+    </ion-item>
+    <!-- <a ion-item *ngFor="let item of sucursales"  color="primary">
+      {{ item.nombre }}
+      <p>DIRECCIÓN</p>
+      {{item.calle}}, {{item.colonia}}, {{item.municipio}}, {{item.ciudad}}, {{item.estado}}
+    </a> -->
   </ion-list>
-</ion-card>
-<ion-card class="fondotransparente" *ngIf="modoPedido">
+<!-- </ion-card> -->
+<!-- <ion-card class="fondotransparente" *ngIf="modoPedido">
   <ion-fab right top>
     <button ion-fab color="danger" (click)="showCard()">
       <ion-icon name="ios-cart"></ion-icon>
@@ -28,8 +47,8 @@
       {{ item.nombre }}
     </a>
   </ion-list>
-</ion-card>
-<ion-card *ngIf="_sp.secciones.length > 0 && modoPedido">
+</ion-card> -->
+<!-- <ion-card *ngIf="_sp.secciones.length > 0 && modoPedido">
   <ion-list>
     <u ion-item text-wrap *ngFor="let item of _sp.productos" (click)="showPrompt(item)" color="secondary">
       <ion-icon name="ios-add" item-start></ion-icon>
@@ -39,9 +58,9 @@
       {{ item.nombre }}
     </a>
   </ion-list>
+</ion-card> -->
 </ion-card>
-</ion-card>
-<ion-card *ngIf="showCarrito && productosPedido.length > 0" class="fondotransparente">
+<!-- <ion-card *ngIf="showCarrito && productosPedido.length > 0" class="fondotransparente">
 
   <ion-card class="fondotransparente">
     <button ion-button icon-end color="secondary" (click)="avisoMontoAPagar()">
@@ -68,5 +87,5 @@
   </ion-card-content>
 
 </ion-card>
-</ion-card>
+</ion-card> -->
 </ion-content>

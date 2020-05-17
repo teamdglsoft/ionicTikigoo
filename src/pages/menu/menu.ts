@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, ViewController } from 'ionic-angular';
 import { SucursalesProvider } from "../../providers/index.services";
 @Component({
   selector: 'page-menu',
@@ -7,13 +7,17 @@ import { SucursalesProvider } from "../../providers/index.services";
 })
 export class MenuPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(public navCtrl: NavController,
+    private viewCtrl: ViewController,
   private _sp: SucursalesProvider,) {
     this._sp.getSeccionesPorSucursal('TIZOC');
   }
 
   showProductos(seccion: string) {
     this._sp.getProductoPorSeccion(seccion);
+  }
+  dismiss() {
+    this.viewCtrl.dismiss();
   }
 
 }

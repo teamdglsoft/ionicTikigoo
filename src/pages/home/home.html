@@ -1,14 +1,23 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      INICIO
+      <p class="textWhite">EL FILÓN</p>
     </ion-title>
   </ion-navbar>
 </ion-header>
 
+
 <ion-content padding class="bg-image">
+
+<div class="possMenu">
+  <ion-item  class="fondotransparente" style="color: white;">
+  <span item-start (click)="showMenu()">MENÚ</span>
+  <span item-start (click)="showSucursales()">SUCURSALES</span>
+  <span item-start >ORDENAR</span>
+  <span item-start (click)="showGaleria()">GALERIA</span>
+  </ion-item>
+</div>
   <ion-card class="fondotransparente" no-lines>
-    <img src="../../assets/imgs/LOGOBG.png">
   <ion-slides autoplay="1" loop="true" speed="6500" class="slides poss" pager="true">
       <ion-slide *ngFor="let item of imagenArr">
          <img src="{{item.image}}">

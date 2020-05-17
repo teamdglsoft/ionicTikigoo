@@ -15,6 +15,7 @@ export class SucursalesPage {
   montoTotal: number = 0;
   showCarrito: boolean = false;
   pagaCon: number;
+  sucursales: any [] = [];
   constructor(public viewCtrl: ViewController,
     private toastCtrl: ToastController,
     public navParams: NavParams,
@@ -24,6 +25,21 @@ export class SucursalesPage {
   ) {
     this.modoPedido = navParams.get('modoPedido');
     this.idUsuario = navParams.get('idUsuario');
+    this.getSucursales();
+  }
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
+
+  getSucursales() {
+    this._sp.getSucursales(data => {
+      this.sucursales = data;
+      console.log(this.sucursales);
+    });
+    // this._sp.getSucursales(callback => {
+    //   this.sucursal = callback;
+    //   console.log('Sucursales recived: ', this.sucursales);
+    // }, null);
   }
   showRadio(monto: number) {
     let alert = this.alertCtrl.create();

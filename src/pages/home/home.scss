@@ -5,13 +5,31 @@ page-home {
     padding: 0px;
   }
   .poss {
-    padding-top: 10%;
+    padding-top: 45%;
+  }
+  .possMenu {
+    // padding-left: -2%;
+    // padding-right: 6%;
+    padding-top: 49% ;
+  }
+  span {
+    position:relative;
+    font-size: 90%;
   }
 .bg-image {
   background-image: url('../assets/imgs/background.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+}
+.backcolor {
+   -background-color: blue;
+}
+.toolbar-background {
+    background-color: black;
+}
+.textWhite {
+  color:  white;
 }
 .fondotransparente {
   border-color: rgba(0, 0, 0, 0);
