@@ -1,5 +1,4 @@
 export {HomePage}  from "./home/home";
-export {LoginPage}  from "./login/login";
 export {OrdenesPage}  from "./ordenes/ordenes";
 export {OrdenesDetallePage}  from "./ordenes-detalle/ordenes-detalle";
 export {PedidoPage} from "./pedido/pedido";
@@ -10,3 +9,5 @@ export {TabsPage} from "./tabs/tabs";
 export {GaleriaPage} from "./galeria/galeria";
 export {UserRegisterPage} from "./user-register/user-register";
 export {SucursalModPedidoPage} from "./sucursal-mod-pedido/sucursal-mod-pedido";
+export {EventosPage} from "./eventos/eventos";
+export {OrdenarPage} from "./ordenar/ordenar";

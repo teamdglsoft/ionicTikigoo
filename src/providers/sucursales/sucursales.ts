@@ -45,6 +45,7 @@ export class SucursalesProvider {
   }
 
   getSucursales (callback) {
+    this.sucursales = [];
     let url = url_servicios + 'sucursales';
     this.http.get(url)
     .subscribe( (data: any) => {

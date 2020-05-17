@@ -5,24 +5,21 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Device } from '@ionic-native/device';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClientModule } from '@angular/common/http';
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 
 import { MyApp } from './app.component';
-// import { HomePage } from '../pages/home/home';
-//import { PedidoProvider } from '../providers/pedido/pedido';
-//import { ProductosProvider } from '../providers/productos/productos';
-//import { UsuarioProvider } from '../providers/usuario/usuario';
-//import { SucursalesProvider } from '../providers/sucursales/sucursales';
 
-import { PedidoProvider, ProductosProvider, SucursalesProvider, UsuarioProvider, GaleriaProvider, RegisterUserProvider, SeccionesProvider}  from "../providers/index.services";
+import { PedidoProvider, ProductosProvider, SucursalesProvider, UsuarioProvider, GaleriaProvider,
+  RegisterUserProvider, SeccionesProvider}  from "../providers/index.services";
 //paginas
-import { LoginPage, OrdenesPage, OrdenesDetallePage, PedidoPage, SucursalDetallePage, SucursalesPage, MenuPage, TabsPage, HomePage, GaleriaPage, UserRegisterPage, SucursalModPedidoPage}  from "../pages/index.paginas";
+import { EventosPage, OrdenesPage, OrdenesDetallePage, PedidoPage, SucursalDetallePage,
+  SucursalesPage, MenuPage, TabsPage, HomePage, GaleriaPage, UserRegisterPage, SucursalModPedidoPage, OrdenarPage}  from "../pages/index.paginas";
 
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    LoginPage,
     OrdenesPage,
     OrdenesDetallePage,
     PedidoPage,
@@ -32,18 +29,20 @@ import { LoginPage, OrdenesPage, OrdenesDetallePage, PedidoPage, SucursalDetalle
     TabsPage,
     GaleriaPage,
     UserRegisterPage,
-    SucursalModPedidoPage
+    SucursalModPedidoPage,
+    EventosPage,
+    OrdenarPage
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
+    IonicImageViewerModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    LoginPage,
     OrdenesPage,
     OrdenesDetallePage,
     PedidoPage,
@@ -53,7 +52,9 @@ import { LoginPage, OrdenesPage, OrdenesDetallePage, PedidoPage, SucursalDetalle
     TabsPage,
     GaleriaPage,
     UserRegisterPage,
-    SucursalModPedidoPage
+    SucursalModPedidoPage,
+    EventosPage,
+    OrdenarPage
   ],
   providers: [
     StatusBar,

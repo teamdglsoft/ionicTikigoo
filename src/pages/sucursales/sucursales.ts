@@ -28,6 +28,8 @@ export class SucursalesPage {
     this.getSucursales();
   }
   dismiss() {
+    this.sucursales = [];
+    console.log(this.sucursales)
     this.viewCtrl.dismiss();
   }
 
@@ -36,10 +38,6 @@ export class SucursalesPage {
       this.sucursales = data;
       console.log(this.sucursales);
     });
-    // this._sp.getSucursales(callback => {
-    //   this.sucursal = callback;
-    //   console.log('Sucursales recived: ', this.sucursales);
-    // }, null);
   }
   showRadio(monto: number) {
     let alert = this.alertCtrl.create();

@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar class="toolbar-background">
+    <ion-title>
+      <span style="color: white;">EVENTOS</span>
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span showWhen="ios" style="color: white;">VOLVER</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fondotransparente" >
+  <div style="padding-top: 20% ;">
+      <ion-card *ngFor="let img of imagenArr" class="fondotransparente">
+        <img src="{{img.image}}" class="fondotransparente" imageViewer/>
+      </ion-card>
+      </div>
+</ion-content>

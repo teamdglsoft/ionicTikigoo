@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { Device } from '@ionic-native/device';
 
-import { MenuPage, SucursalesPage, GaleriaPage }  from "../index.paginas";
+import { MenuPage, SucursalesPage, GaleriaPage, EventosPage, OrdenarPage }  from "../index.paginas";
 
 @Component({
   selector: 'page-home',
@@ -31,6 +31,14 @@ export class HomePage {
         'image': '../../assets/imgs/slides/promociones/promo4.jpg'
       }
     ];
+  }
+  ordenar() {
+    let modal = this.modalCtrl.create(OrdenarPage)
+    modal.present();
+  }
+  showImg() {
+    let modal = this.modalCtrl.create(EventosPage)
+    modal.present();
   }
   showGaleria() {
     let modal = this.modalCtrl.create(GaleriaPage)

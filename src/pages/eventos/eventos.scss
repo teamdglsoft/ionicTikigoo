@@ -1,0 +1,23 @@
+page-eventos {
+  .toolbar-background {
+      background-color: #7ba4db;
+  }
+  ion-slide.swiper-slide {
+       left: 25%;
+   }
+   .fondotransparente {
+     border-color: rgba(0, 0, 0, 0);
+     background-color:rgba(0,0,0,0);
+     box-shadow: none !important;
+     padding: 1%;
+   }
+
+   .slide-zoom {
+       background: #e6e6e6;
+   }
+
+  ion-content {
+    background: #572c5f !important
+  }
+
+}
