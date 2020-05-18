@@ -17,10 +17,10 @@
   <span item-start (click)="showGaleria()">GALERIA</span>
   </ion-item>
 </div>
-  <ion-card class="fondotransparente" no-lines>
+  <ion-card class="fondotransparente" no-lines style="padding-left: 5%; padding-right: 6%;">
   <ion-slides autoplay="1" loop="true" speed="6500" class="slides poss" pager="true">
       <ion-slide *ngFor="let item of imagenArr">
-         <img src="{{item.image}}">
+         <img src="{{item.image}}" style="border-radius: 8px;" style="max-width: 80%; height: auto;">
       </ion-slide>
  </ion-slides>
 </ion-card>

@@ -14,7 +14,7 @@
 
 <ion-content>
   <!-- <ion-card *ngIf="!showCarrito || productosPedido.length === 0" class="fondotransparente"> -->
-<ion-card class="fondotransparente" *ngIf="!modoPedido">
+<ion-card class="fondotransparente" *ngIf="!modoPedido" style="padding-top: 15%">
   <ion-list>
     <ion-item style="color: white;" *ngFor="let item of sucursales" no-lines class="fondotransparente">
       {{ item.nombre }}
@@ -28,26 +28,24 @@
           <br>
           {{item.estado}}
     </ion-item>
-    <!-- <a ion-item *ngFor="let item of sucursales"  color="primary">
-      {{ item.nombre }}
-      <p>DIRECCIÓN</p>
-      {{item.calle}}, {{item.colonia}}, {{item.municipio}}, {{item.ciudad}}, {{item.estado}}
-    </a> -->
   </ion-list>
-<!-- </ion-card> -->
-<!-- <ion-card class="fondotransparente" *ngIf="modoPedido">
-  <ion-fab right top>
-    <button ion-fab color="danger" (click)="showCard()">
-      <ion-icon name="ios-cart"></ion-icon>
-    </button>
-  </ion-fab>
-  <img src="../../assets/imgs/LOGOBG.png">
-  <ion-list *ngIf="_sp.secciones.length === 0">
-    <a ion-item *ngFor="let item of _sp.sucursales" (click)="showMenuProd(item.nombre)" color="primary">
+</ion-card>
+<ion-card class="fondotransparente" *ngIf="modoPedido" style="padding-top: 15%">
+  <ion-list>
+    <ion-item style="color: white;" *ngFor="let item of sucursales" no-lines class="fondotransparente" (click)="showMenuSucursal(item.nombre)">
       {{ item.nombre }}
-    </a>
+      <br>
+      <br>
+      DIRECCIÓN
+      <br><br>
+      {{item.calle}}, {{item.colonia}},
+        <br>
+        {{item.municipio}}, {{item.ciudad}},
+          <br>
+          {{item.estado}}
+    </ion-item>
   </ion-list>
-</ion-card> -->
+</ion-card>
 <!-- <ion-card *ngIf="_sp.secciones.length > 0 && modoPedido">
   <ion-list>
     <u ion-item text-wrap *ngFor="let item of _sp.productos" (click)="showPrompt(item)" color="secondary">
@@ -58,7 +56,7 @@
       {{ item.nombre }}
     </a>
   </ion-list>
-</ion-card> -->
+</ion-card>
 </ion-card>
 <!-- <ion-card *ngIf="showCarrito && productosPedido.length > 0" class="fondotransparente">
 

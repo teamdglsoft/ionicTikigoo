@@ -19,7 +19,7 @@
       {{item.nombre}}, {{item.precio}}.00
     </u> -->
   <ion-list style="padding-top: 20% ;">
-    <ion-item no-lines class="fondotransparente" style="color: white;" *ngFor="let item of _sp.secciones" text-center> {{item.nombre}} </ion-item>
+    <ion-item no-lines class="fondotransparente" style="color: white;" *ngFor="let item of secciones" text-center> {{item.nombre}} </ion-item>
     <!-- <button color="primary" ion-item *ngFor="let item of _sp.secciones" (click)="showProductos(item.nseccion)">
       <ion-icon *ngIf="item.nombre === 'BEBIDAS'" name="ios-beer" item-start></ion-icon>
       <ion-icon *ngIf="item.nombre === 'POSTRES'" name="ios-ice-cream" item-start></ion-icon>

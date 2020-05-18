@@ -23,33 +23,14 @@ export class PedidoPage {
     console.log('IDD: ', this.device.uuid);
   }
 
-
-
-  ionViewDidLoad() {
-    this.showModalRegister();
-  }
-
   showModalRegister() {
-    this._rup.getCodeToDeviceId(response => {
-      console.log('all response: ', response);
-      this.idUsuario = response.idUsuario;
-      if(response.edo === 0 || response.edo === 1 || response.edo === 2) {
-        let modal = this.modalCtr.create(UserRegisterPage, {estado: response.edo})
-        this.statusCode = response.edo;
-        modal.present();
-        modal.onDidDismiss(parametro => {
-          this.statusCode = parametro.newStatus;
-        });
-      } else {
-        this.statusCode = response.edo;
-        console.log('Estatus code: ', response.edo);
-        console.log('id usuario: ', this.idUsuario);
-      }
-    });
+    console.log('Hi');
+    let modal = this.modalCtr.create(UserRegisterPage);
+    modal.present();
   }
 
   pedidoAdomicilio() {
-    let modal = this.modalCtr.create(SucursalesPage, {modoPedido: true, idUsuario: this.idUsuario})
+    let modal = this.modalCtr.create(SucursalesPage, {modoPedido: true, idUsuario: this.idUsuario});
     modal.present();
   }
 

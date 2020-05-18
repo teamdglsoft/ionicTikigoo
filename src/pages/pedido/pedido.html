@@ -12,18 +12,6 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card class="fondotransparente" *ngIf="statusCode === 0 || statusCode === 1 || statusCode === 2">
-    <img src="../../assets/imgs/LOGOBG.png">
-    <ion-card-content>
-      <ion-card-title style="color: white;">
-        Dispositivo sin cuenta
-        </ion-card-title>
-      <p style="color: white;">
-        Hola, hemos detectado que tu dispositivo no esta ligado a una cuenta, favor de crear una para poder realizar pedidos.
-      </p>
-      <p style="color: white;">Si no se abrió el formulario de registro <a> <u (click)="showModalRegister()">presione a qui para continuar </u></a></p>
-    </ion-card-content>
-  </ion-card>
   <ion-card *ngIf="statusCode === 3" class="fondotransparente">
     <img src="../../assets/imgs/LOGOBG.png">
   <ion-list class="card">

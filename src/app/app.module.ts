@@ -9,29 +9,42 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
 
 import { MyApp } from './app.component';
 
-import { PedidoProvider, ProductosProvider, SucursalesProvider, UsuarioProvider, GaleriaProvider,
+import { PedidoProvider, ProductosProvider, SucursalesProvider, GaleriaProvider, DeviceProvider,
   RegisterUserProvider, SeccionesProvider}  from "../providers/index.services";
 //paginas
-import { EventosPage, OrdenesPage, OrdenesDetallePage, PedidoPage, SucursalDetallePage,
-  SucursalesPage, MenuPage, TabsPage, HomePage, GaleriaPage, UserRegisterPage, SucursalModPedidoPage, OrdenarPage}  from "../pages/index.paginas";
+import {
+  AdomicilioPage,
+  PedidoPage,
+  SucursalDetallePage,
+  ProductoPage,
+  SucursalesPage,
+  MenuPage,
+  TabsPage,
+  HomePage,
+  GaleriaPage,
+  UserRegisterPage,
+  OrdenarPage,
+  MenuSucursalesPage,
+  EventosPage
+}  from "../pages/index.paginas";
 
 
 @NgModule({
   declarations: [
-    MyApp,
-    HomePage,
-    OrdenesPage,
-    OrdenesDetallePage,
     PedidoPage,
+    MyApp,
     SucursalDetallePage,
     SucursalesPage,
+    HomePage,
     MenuPage,
     TabsPage,
     GaleriaPage,
     UserRegisterPage,
-    SucursalModPedidoPage,
+    OrdenarPage,
+    MenuSucursalesPage,
     EventosPage,
-    OrdenarPage
+    ProductoPage,
+    AdomicilioPage
   ],
   imports: [
     HttpClientModule,
@@ -43,8 +56,6 @@ import { EventosPage, OrdenesPage, OrdenesDetallePage, PedidoPage, SucursalDetal
   entryComponents: [
     MyApp,
     HomePage,
-    OrdenesPage,
-    OrdenesDetallePage,
     PedidoPage,
     SucursalDetallePage,
     SucursalesPage,
@@ -52,9 +63,11 @@ import { EventosPage, OrdenesPage, OrdenesDetallePage, PedidoPage, SucursalDetal
     TabsPage,
     GaleriaPage,
     UserRegisterPage,
-    SucursalModPedidoPage,
-    EventosPage,
-    OrdenarPage
+    OrdenarPage,
+    MenuSucursalesPage,
+    ProductoPage,
+    AdomicilioPage,
+    EventosPage
   ],
   providers: [
     StatusBar,
@@ -63,11 +76,11 @@ import { EventosPage, OrdenesPage, OrdenesDetallePage, PedidoPage, SucursalDetal
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PedidoProvider,
     ProductosProvider,
-    UsuarioProvider,
     SucursalesProvider,
     SeccionesProvider,
     GaleriaProvider,
-    RegisterUserProvider
+    RegisterUserProvider,
+    DeviceProvider
   ]
 })
 export class AppModule {}

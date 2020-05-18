@@ -19,7 +19,6 @@ export class SucursalesProvider {
     .map(data => data)
     .subscribe( (data: any) => {
       if(data.error) {
-
       } else {
         callback(data);
         console.log('se creo la orden correctamente');
@@ -58,7 +57,7 @@ export class SucursalesProvider {
       }
     } );
   }
-  getSeccionesPorSucursal(sucursal: string) {
+  getSeccionesPorSucursal(callback, sucursal: string) {
     this.secciones = [];
     let url = url_servicios + 'secciones/' + sucursal;
     this.http.get(url)
@@ -67,21 +66,23 @@ export class SucursalesProvider {
 
       } else {
         this.secciones.push( ...data.secciones );
-        console.log('seecciones Ws', this.secciones);
+        callback(this.secciones);
       }
     } );
   }
 
-  getProductoPorSeccion(seccion: any) {
+  getProductoPorSeccion(callback, seccion: any) {
     this.productos = [];
     let url = url_servicios + 'getProductosBySeccion/' + seccion;
     this.http.get(url)
     .subscribe( (data: any) => {
+      console.log('estado', data);
       if(data.error) {
 
       } else {
         this.productos.push( ...data.productos );
         console.log('productos Ws', this.productos);
+        callback(this.productos);
       }
     } );
   }

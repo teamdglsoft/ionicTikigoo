@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar class="toolbar-background">
+    <ion-title>
+      <span style="color: white;">MENÚ: {{sucursal}}</span>
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span showWhen="ios" style="color: white;">VOLVER</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list style=" padding-top: 20%; text-right">
+      <ion-buttons end>
+        <button ion-button icon-only style="background-color: transparent; font-size: 11pt;" class="underline" (click)="showPedido()">
+          REGISTRAR PEDIDO
+        </button>
+      </ion-buttons>
+    </ion-list>
+  <ion-card class="fondotransparente">
+  <ion-list>
+    <ion-item no-lines class="fondotransparente" style="color: white;" *ngFor="let item of secciones" text-center (click)="showSubProductos(item.nseccion, item.nombre)"> {{item.nombre}} </ion-item>
+  </ion-list>
+</ion-card>
+</ion-content>

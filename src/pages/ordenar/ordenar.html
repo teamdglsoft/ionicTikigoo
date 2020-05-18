@@ -13,12 +13,23 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card class="fondotransparente">
+  <ion-card class="fondotransparente" *ngIf="statusCode === 3">
   <ion-list style="padding-top: 20% ;">
-    <ion-item no-lines class="fondotransparente" style="color: white;" text-center> SERVICIO A DOMICILIO </ion-item>
-    <ion-item no-lines class="fondotransparente" style="color: white;" text-center> PARA LLEVAR </ion-item>
+    <ion-item no-lines class="fondotransparente" style="color: white;" text-center (click)="showSucursalesModPedido(0)"> SERVICIO A DOMICILIO </ion-item>
+    <ion-item no-lines class="fondotransparente" style="color: white;" text-center (click)="showSucursalesModPedido(1)"> PARA LLEVAR </ion-item>
     <ion-item no-lines class="fondotransparente" style="color: white;" text-center (click)="showEventos()"> EVENTOS </ion-item>
 
   </ion-list>
+</ion-card>
+<ion-card class="fondotransparente" *ngIf="statusCode !== 3 && statusCode === null">
+  <ion-card-content style="padding-top: 60%">
+    <ion-card-title style="color: white;">
+      Dispositivo sin cuenta
+      </ion-card-title>
+    <p style="color: white;">
+      Hola, hemos detectado que tu dispositivo no esta ligado a una cuenta, favor de crear una para poder realizar pedidos.
+    </p>
+    <p style="color: white;">Si no se abrió el formulario de registro <a (click)="showModalRegister()">presione a qui para continuar</a> con tu registro donde lo dejaste</p>
+  </ion-card-content>
 </ion-card>
 </ion-content>

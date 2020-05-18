@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar class="toolbar-background">
+    <ion-title>
+      <span style="color: white;">CONSULTAR PEDIDO</span>
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span showWhen="ios" style="color: white;">VOLVER</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="padding-top: 13%;">
+
+
+
+
+
+
+    <ion-card *ngFor="let item of pedido; index as i">
+      <ion-card-header style="background-color: red; color: white;">
+        {{item.nombre}}
+      </ion-card-header>
+      <ion-card-content style="color: red;">
+        CANTIDAD: {{item.cantidad}}
+        <br>OBSERVACIONES: {{item.observaciones}}
+        <br>PRECIO: ${{item.precio}}
+        <br>
+        <a style="color: red;" (click)="quitarProducto(i)">QUITAR PRODUCTO</a>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="fondotransparente">
+      <ion-list class="fondotransparente">
+        <ion-item class="fondotransparente" style="color: white; text-align: right;">
+          TOTAL A PAGAR: {{totalPago}}
+        </ion-item>
+        <ion-item class="fondotransparente">
+          <button ion-button color="danger" (click)="avisoMontoAPagar()">ENVIAR PEDIDOS</button>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+</div>
+</ion-content>

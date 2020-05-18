@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ToastController, AlertController , ViewController, NavParams, ModalController } from 'ionic-angular';
+import { ToastController, AlertController , ViewController, NavParams, ModalController, LoadingController } from 'ionic-angular';
 import { SucursalesProvider } from "../../providers/index.services";
-import { SucursalDetallePage }  from "../index.paginas";
+import { SucursalDetallePage, MenuSucursalesPage }  from "../index.paginas";
 @Component({
   selector: 'page-sucursales',
   templateUrl: 'sucursales.html',
@@ -16,16 +16,23 @@ export class SucursalesPage {
   showCarrito: boolean = false;
   pagaCon: number;
   sucursales: any [] = [];
+  domicilio: number;
   constructor(public viewCtrl: ViewController,
     private toastCtrl: ToastController,
     public navParams: NavParams,
     private _sp: SucursalesProvider,
     private modalCtr: ModalController,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private loadingCtrl: LoadingController
   ) {
-    this.modoPedido = navParams.get('modoPedido');
+    this.modoPedido = navParams.get('modPedido');
     this.idUsuario = navParams.get('idUsuario');
+    this.domicilio = navParams.get('domicilio');
     this.getSucursales();
+  }
+  showMenuSucursal(sucursal) {
+    let modal = this.modalCtr.create(MenuSucursalesPage, {sucursal: sucursal, idUsuario: this.idUsuario, domicilio: this.domicilio})
+    modal.present();
   }
   dismiss() {
     this.sucursales = [];
@@ -34,7 +41,12 @@ export class SucursalesPage {
   }
 
   getSucursales() {
+    const loader = this.loadingCtrl.create({
+      content: "Obteniendo sucursales"
+    });
+    loader.present();
     this._sp.getSucursales(data => {
+      loader.dismiss()
       this.sucursales = data;
       console.log(this.sucursales);
     });
@@ -205,11 +217,11 @@ export class SucursalesPage {
   showMenuProd(sucursal: string) {
     console.log('Sucursal: ', sucursal);
     this.sucursal = sucursal;
-    this._sp.getSeccionesPorSucursal(sucursal);
+    // this._sp.getSeccionesPorSucursal(sucursal);
   }
   showProductos(seccion: any) {
     console.log('Seccion: ', seccion);
-    this._sp.getProductoPorSeccion(seccion);
+    // this._sp.getProductoPorSeccion(seccion);
   }
   addProduct(nProducto: any) {
     console.log(nProducto);

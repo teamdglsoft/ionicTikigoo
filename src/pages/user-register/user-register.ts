@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ViewController, NavParams, ToastController, ModalController } from 'ionic-angular';
-import {RegisterUserProvider}  from "../../providers/index.services";
+import {RegisterUserProvider, DeviceProvider}  from "../../providers/index.services";
 import { PedidoPage }  from "../index.paginas";
 import { Device } from '@ionic-native/device';
 @Component({
@@ -27,31 +27,34 @@ export class UserRegisterPage {
   constructor(public viewCtrl: ViewController,
               public navParams: NavParams,
               private toastCtrl: ToastController,
-            private _urp: RegisterUserProvider,
-          private modalCtr: ModalController,
-        private device: Device) {
+              private _urp: RegisterUserProvider,
+              private modalCtr: ModalController,
+              private device: Device,
+              private _deviceProvider: DeviceProvider,
+            ) {
 
       this.estado = navParams.get("estado");
       this.idDispositivo = this.device.uuid;
-      console.log('Estado recibido: ', this.estado);
+  }
+  dismiss() {
+    this.viewCtrl.dismiss();
   }
   addNewDeviceAndCode() {
-    this._urp.registerNewDeviceId((response => {
+    this._deviceProvider.registerNewDeviceId((response => {
       if(response) {
-        this.showCustomToast('Se ha registrado su dispositivo correctamente, en breve resicibira un sms para continuar con su registro.', 6000);
+        this.showCustomToast('Se ha registrado su dispositivo correctamente, en breve resicibira un sms para continuar con su registro.', 4500);
         this.estado = 1;
       }
     }), Number(this.celular));
   }
 
   updateStateCodeToDevineId() {
-    this._urp.updateEdoToEstado((response => {
-      console.log('response: ', response);
+    this._deviceProvider.updateEdoToEstado((response => {
       if(response.ok) {
-        this.showCustomToast('Codigo correcto, ahora puede terminar de completar su registro', 6000);
+        this.showCustomToast('Codigo correcto, ahora puede terminar de completar su registro', 4500);
         this.estado = 2;
       } else {
-        this.showCustomToast('El codigo ingresado es incorrecto, verifiquelo e intetelo nuevamente', 6000);
+        this.showCustomToast('El codigo ingresado es incorrecto, verifiquelo e intetelo nuevamente', 4500);
       }
     }), this.codigoSMS);
   }
@@ -71,10 +74,8 @@ export class UserRegisterPage {
     this._urp.insertNewUser((response => {
       if(response.ok) {
         this.estado = 3;
-        this.showCustomToast('El usuario se ha creado correctamente', 6000);
+        this.showCustomToast('El usuario se ha creado correctamente', 4500);
         this.viewCtrl.dismiss({newStatus: 3});
-        // let modal = this.modalCtr.create(PedidoPage, {newStatus: 3})
-        // modal.present();
       }
       console.log(response);
     }), dataToWs);
@@ -84,6 +85,9 @@ export class UserRegisterPage {
   }
   backToSendSms() {
     this.estado = 0;
+  }
+  reSendSendSms() {
+    
   }
 
   showCustomToast(mensaje: string, time: number) {

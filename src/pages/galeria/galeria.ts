@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
-import { GaleriaProvider } from "../../providers/galeria/galeria"
+import { GaleriaProvider } from "../../providers/index.services"
 @Component({
   selector: 'page-galeria',
   templateUrl: 'galeria.html',
@@ -13,10 +13,7 @@ export class GaleriaPage {
   private viewCtrl: ViewController
   ) {
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad GaleriaPage');
-  } dismiss() {
+  dismiss() {
     this.viewCtrl.dismiss();
   }
 
