@@ -33,6 +33,7 @@
     "@ionic/storage": "2.2.0",
     "autoprefixer": "^9.7.6",
     "body-parser": "^1.19.0",
+    "cordova-android": "^8.1.0",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-inappbrowser": "^3.2.0",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
@@ -69,6 +70,8 @@
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-inappbrowser": {}
     },
-    "platforms": []
+    "platforms": [
+      "android"
+    ]
   }
 }
