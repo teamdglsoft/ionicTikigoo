@@ -11,6 +11,7 @@ import { MenuPage, SucursalesPage, GaleriaPage, EventosPage, OrdenarPage }  from
 export class HomePage {
   imagenArr: any  = [];
   //sucursalesPage = SucursalesPage;
+  logo: string = '../../assets/imgs/LOGOBG.png';
   constructor(public navCtrl: NavController,
     private modalCtrl: ModalController,
     private device: Device
