@@ -8,7 +8,7 @@
 
 
 <ion-content padding class="bg-image">
-
+<!--
 <div class="possMenu">
   <ion-item  class="fondotransparente" style="color: white;">
   <span item-start (click)="showMenu()">MENÚ</span>
@@ -16,12 +16,15 @@
   <span item-start (click)="ordenar()">ORDENAR</span>
   <span item-start (click)="showGaleria()">GALERIA</span>
   </ion-item>
-</div>
-  <ion-card class="fondotransparente" no-lines style="padding-left: 5%; padding-right: 6%;">
-  <ion-slides autoplay="1" loop="true" speed="6500" class="slides poss" pager="true">
-      <ion-slide *ngFor="let item of imagenArr">
-         <img src="{{item.image}}" style="border-radius: 8px;" style="max-width: 80%; height: auto;">
+</div> -->
+<div style="padding-top: 90%;" text-center>
+  <ion-card class="promociones-background" no-lines style="padding-left: 5%; padding-right: 6%;">
+    <br><span style="color: white; font-size: 150%">PROMOCIONES</span>
+  <ion-slides autoplay="1" loop="true" speed="6500" class="slides" pager="true">
+      <ion-slide *ngFor="let item of imagenArr" style="padding-top:5%; padding-bottom: 12%;">
+         <img src="{{item.image}}" style="border-radius: 8px; " style="max-width: 80%; height: auto;">
       </ion-slide>
  </ion-slides>
 </ion-card>
+</div>
 </ion-content>

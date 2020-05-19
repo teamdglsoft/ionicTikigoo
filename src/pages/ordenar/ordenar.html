@@ -3,12 +3,12 @@
     <ion-title>
       <span style="color: white;">ORDENAR</span>
     </ion-title>
-    <ion-buttons start>
+    <!-- <ion-buttons start>
       <button ion-button (click)="dismiss()">
         <span showWhen="ios" style="color: white;">VOLVER</span>
         <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
       </button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-toolbar>
 </ion-header>
 
@@ -21,7 +21,7 @@
 
   </ion-list>
 </ion-card>
-<ion-card class="fondotransparente" *ngIf="statusCode !== 3 && statusCode === null">
+<ion-card class="fondotransparente" *ngIf="statusCode !== 3 || statusCode === null">
   <ion-card-content style="padding-top: 60%">
     <ion-card-title style="color: white;">
       Dispositivo sin cuenta

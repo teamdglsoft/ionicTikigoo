@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { ViewController, NavParams, ToastController, ModalController } from 'ionic-angular';
+import { ViewController, NavParams, ToastController } from 'ionic-angular';
 import {RegisterUserProvider, DeviceProvider}  from "../../providers/index.services";
-import { PedidoPage }  from "../index.paginas";
 import { Device } from '@ionic-native/device';
 @Component({
   selector: 'page-user-register',
@@ -28,7 +27,6 @@ export class UserRegisterPage {
               public navParams: NavParams,
               private toastCtrl: ToastController,
               private _urp: RegisterUserProvider,
-              private modalCtr: ModalController,
               private device: Device,
               private _deviceProvider: DeviceProvider,
             ) {
@@ -87,7 +85,7 @@ export class UserRegisterPage {
     this.estado = 0;
   }
   reSendSendSms() {
-    
+
   }
 
   showCustomToast(mensaje: string, time: number) {

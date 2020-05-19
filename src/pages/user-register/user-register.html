@@ -26,51 +26,52 @@
         <ion-item class="fondotransparente">
           <ion-label stacked style="color: white;" text-center>Ingresa tu número para iniciar tu registro</ion-label>
           <ion-label style="color: white;" floating>Celular</ion-label>
-          <ion-input type="number" placeholder="Celular" [(ngModel)]="celular" style="color: white;">
+          <ion-input type="number" [(ngModel)]="celular" style="color: white;">
           </ion-input>
         </ion-item>
         <ion-item no-lines class="fondotransparente" text-center>
           <button style="color: white;" ion-button clear (click)="addNewDeviceAndCode()" [disabled]="celular.length < 10"> CONTINUAR </button>
         </ion-item>
       </ion-list>
-      <ion-list no-lines *ngIf="estado === 1">
-        <ion-item class="fondotransparente">
-          <ion-label stacked style="color: white;" text-center>Ingresa el codigo de confirmación</ion-label>
-          <ion-label style="color: white;" floating>Codigo</ion-label>
-          <ion-input type="number" placeholder="Codigo" [(ngModel)]="codigoSMS" style="color: white;">
-          </ion-input>
-        </ion-item>
-        <ion-item no-lines class="fondotransparente" text-center>
-
-  <ion-row>
-    <ion-buttons end>
-      <button ion-button icon-only style="background-color: transparent; font-size: 11pt;" class="underline" (click)="backToSendSms()">
-        REGRESAR
-        <!-- <ion-icon name="search"></ion-icon> -->
-      </button>
-      <button ion-button icon-only style="background-color: transparent; font-size: 11pt;" class="underline" (click)="reSendSendSms()">
-        REENVIAR SOLICITUD
-        <!-- <ion-icon name="search"></ion-icon> -->
-      </button>
-      <button ion-button icon-only style="background-color: transparent; font-size: 11pt;" class="underline" (click)="updateStateCodeToDevineId()">
-        CONTINUAR
-        <!-- <ion-icon name="search"></ion-icon> -->
-      </button>
-    </ion-buttons>
-    <!-- <ion-col col-4>
-      <button style="color: white; max-width: 100%" ion-button clear block text-wrap [disabled]="codigoSMS.length < 4" (click)="updateStateCodeToDevineId()"> CONTINUAR </button>
-    </ion-col>
-    <ion-col col-12 clear block text-wrap text-left> Has introducido mal tu numero?
-      <a (click)="backToSendSms()">ingresalo de nuevo</a>
-    </ion-col>
-    <ion-col col-12 clear block text-wrap text-left> No recibiste el SMS de confirmación?
-      <a (click)="backToSendSms()">Reenviar SMS</a>
-    </ion-col> -->
-  </ion-row>
+      <ion-card class="fondotransparente">
+        <ion-list no-lines *ngIf="estado === 1">
+          <ion-item class="fondotransparente">
+            <ion-label stacked style="color: white;" text-center>Ingresa el codigo de confirmación</ion-label>
+            <ion-label style="color: white;" floating>Codigo</ion-label>
+            <ion-input type="number" [(ngModel)]="codigoSMS" style="color: white;">
+            </ion-input>
+          </ion-item>
+          <!-- <ion-item no-lines class="fondotransparente" text-center> -->
+    <!-- <ion-row> -->
+      <!-- <ion-col col-4>
+        <button style="color: white; max-width: 100%" ion-button clear block text-wrap [disabled]="codigoSMS.length < 4" (click)="updateStateCodeToDevineId()"> CONTINUAR </button>
+      </ion-col>
+      <ion-col col-12 clear block text-wrap text-left> Has introducido mal tu numero?
+        <a (click)="backToSendSms()">ingresalo de nuevo</a>
+      </ion-col>
+      <ion-col col-12 clear block text-wrap text-left> No recibiste el SMS de confirmación?
+        <a (click)="backToSendSms()">Reenviar SMS</a>
+      </ion-col> -->
+    <!-- </ion-row> -->
 
 
-        </ion-item>
-      </ion-list>
+          <!-- </ion-item> -->
+          <ion-buttons text-center>
+            <button ion-button icon-only style="background-color: transparent; font-size: 10.5pt;" class="underline" (click)="backToSendSms()">
+              REGRESAR
+              <!-- <ion-icon name="search"></ion-icon> -->
+            </button>
+            <button ion-button icon-only style="background-color: transparent; font-size: 10.5pt;" class="underline" (click)="reSendSendSms()">
+              REENVIAR SOLICITUD
+              <!-- <ion-icon name="search"></ion-icon> -->
+            </button>
+            <button [disabled]="codigoSMS.length < 4" ion-button icon-only style="background-color: transparent; font-size: 10.5pt;" class="underline" (click)="updateStateCodeToDevineId()">
+              CONTINUAR
+              <!-- <ion-icon name="search"></ion-icon> -->
+            </button>
+          </ion-buttons>
+        </ion-list>
+      </ion-card>
 
       <ion-list no-lines *ngIf="estado === 2">
         <ion-item class="fondotransparente">

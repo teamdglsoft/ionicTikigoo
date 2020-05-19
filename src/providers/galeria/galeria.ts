@@ -6,10 +6,9 @@ export class GaleriaProvider {
   imagenes: any [] = [];
 
   constructor(public http: HttpClient) {
-    this.getFotosGaleria();
   }
 
-  getFotosGaleria () {
+  getFotosGaleria (callback) {
     let url = url_servicios + 'getImagenes';
     this.http.get(url)
     .subscribe( (data: any) => {
@@ -19,7 +18,7 @@ export class GaleriaProvider {
       } else {
         this.imagenes.push( ...data.imagenes );
         console.log(this.imagenes);
-
+        callback(this.imagenes);
       }
     } );
 
