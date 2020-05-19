@@ -32,6 +32,7 @@ export class OrdenarPage {
         this.statusCode = response.edo;
         modal.present();
         modal.onDidDismiss(parametro => {
+          console.log(parametro);
           if(parametro) {
             this.statusCode = parametro.newStatus;
           }
